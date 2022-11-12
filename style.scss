@@ -1,0 +1,54 @@
+@use "sass:color";
+
+$color1: red;
+$color2: blue;
+$color3: green;
+$border: 1px solid color.adjust($color1, $lightness: -20%);
+$h1-last-sect: 1px solid green;
+$article-border: 1px solid blue;
+$div-height: 50vh;
+$gap: 10px;
+$height: 111px;
+
+
+@mixin article-box($color, $border-color, $font-size: 1rem) {
+   color: color.adjust($color, $lightness: -10%);
+   border: 1px solid color.adjust($border-color, $lightness: 0%);
+   font-size: $font-size;  
+   padding: 10px 20px;
+   text-align: center;
+}
+h1 {
+   color: $color3;
+   text-align: center;
+   max-width: 19ch;
+   margin: 25px auto 0;
+   border-bottom: 3px solid color.adjust($color2, $lightness: +30%);
+}
+div {
+   // height: $div-height;
+   border: $border;
+   margin: $gap;
+   // padding: $gap;
+}
+section {
+   // max-width: 100%;
+   display: grid;
+   margin: $gap - 5px $gap;
+   padding: $gap;
+   grid-template-columns: repeat(4, 1fr);
+   // grid-template-rows: 1fr;
+}
+.blue {
+   @include article-box(blue, green)
+}
+.red {
+   @include article-box(red, green)
+}
+.footer {
+   @include article-box($color3, $color2, 24px);
+   margin: $gap - 5px $gap + $gap $gap + 5px;
+   padding: $gap + 5px $gap;
+   display: grid;
+   grid-template-columns: 4fr;
+}
